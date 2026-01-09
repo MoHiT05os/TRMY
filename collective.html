@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOHITCOLLECTIVE | The Network</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Rajdhani:wght@300;600;700&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="void-bg"></div>
+    <div class="grid-floor"></div>
+
+    <div id="sub-app">
+        <header class="sector-header">
+            <div class="sector-id font-tech">SEC_06</div>
+            <h1 class="sector-title">MOHITCOLLECTIVE</h1>
+            <p class="sector-tagline mono">> HIVE_MIND // NETWORK</p>
+        </header>
+
+        <main class="sector-content">
+            <div class="terminal-header font-tech">:: ACTIVE_NODES</div>
+            <p>
+                You represent the future. The <strong>Collective</strong> is where we gather.
+                Builders, designers, and visionaries aligned under one protocol.
+            </p>
+            <br>
+            <div class="sector-grid" style="justify-content: center;">
+                <a href="#" id="discord-card" class="sector-card" style="height: 250px; border-color: #5865F2;">
+                    <h3>DISCORD</h3>
+                    <p class="font-tech">[ JOIN_SERVER ]</p>
+                </a>
+                <div class="sector-card" style="height: 250px;">
+                    <h3>EVENTS</h3>
+                    <p class="font-tech">[ UPCOMING ]</p>
+                </div>
+            </div>
+        </main>
+
+        <a href="index.html" class="back-btn font-tech">[ RETURN_TO_NEXUS ]</a>
+    </div>
+    <!-- Load config for Discord link -->
+    <script src="config.js"></script>
+    <script>
+        // Apply Discord link from config
+        if (typeof SYSTEM_CONFIG !== 'undefined' && SYSTEM_CONFIG.socials.discord) {
+            document.getElementById('discord-card').href = SYSTEM_CONFIG.socials.discord;
+            document.getElementById('discord-card').target = "_blank";
+        }
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>
