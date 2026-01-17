@@ -145,8 +145,8 @@ body {
 .spline-bg {
     position: relative;
     width: 100%;
-    height: 100vh;
     /* Full Front Page */
+    height: 100dvh;
     z-index: 1;
     border: none;
     opacity: 1;
@@ -601,25 +601,58 @@ body {
     color: #444;
 }
 
+/* Mobile Optimization */
 @media (max-width: 768px) {
-    .comm-array {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
 
-    .newsletter-form {
+    /* Navigation: Stack vertically */
+    .nexus-nav {
+        height: auto;
         flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        background: rgba(0, 0, 0, 0.95);
     }
 
-    .comm-array::before {
-        left: 50%;
-        transform: translateX(-50%);
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    .channel-link:hover {
-        padding-left: 0;
+    /* Hero Section */
+    .spline-bg {
+        height: 80vh;
+        /* Slightly less than full screen on mobile to show hint of content */
+    }
+
+    .power-zone {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .hero-tagline {
+        font-size: 0.9rem;
         letter-spacing: 2px;
+        /* Reduce spacing to prevent overflow */
+    }
+
+    /* Sector Grid */
+    .sector-grid {
+        padding: 2rem 1rem;
+    }
+
+    .manifesto-terminal {
+        margin: 0 1rem 3rem 1rem;
+    }
+
+    /* Global Text */
+    body {
+        font-size: 14px;
     }
 }
 
