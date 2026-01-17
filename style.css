@@ -1,16 +1,23 @@
 :root {
     --core-black: #000000;
     --night-blue: #02020a;
-    --cyber-cyan: #00f3ff;
+    /* OVERRIDE: Cyber Cyan is now Silver for total conversion */
+    --cyber-cyan: #E0E0E0;
     --plasma-white: #ffffff;
-    --matrix-dark: rgba(0, 243, 255, 0.05);
+    --matrix-dark: rgba(224, 224, 224, 0.05);
+
+    /* Metallic Silver Theme */
+    --metal-silver: #E0E0E0;
+    --metal-dark: #808080;
+    --metal-glow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2);
 
     --font-display: 'Orbitron', sans-serif;
     --font-body: 'Rajdhani', sans-serif;
     --font-tech: 'Share Tech Mono', monospace;
 
-    --glow-strong: 0 0 20px var(--cyber-cyan), 0 0 50px var(--cyber-cyan);
-    --glow-subtle: 0 0 10px rgba(0, 243, 255, 0.3);
+    /* Updated Glows to White/Silver */
+    --glow-strong: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.3);
+    --glow-subtle: 0 0 10px rgba(224, 224, 224, 0.3);
 }
 
 * {
@@ -31,12 +38,12 @@ body {
     align-items: flex-start;
 }
 
-/* BACKGROUND: The Infinite Grid */
+/* BACKGROUND: Pure Black & Silver Grid */
 .void-bg {
     position: fixed;
     inset: 0;
     z-index: -2;
-    background: radial-gradient(circle at center, #111 0%, #000 100%);
+    background: #000000;
 }
 
 .grid-floor {
@@ -104,44 +111,60 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--cyber-cyan);
+    color: var(--metal-silver);
 }
 
 .nav-cta {
-    color: var(--cyber-cyan);
-    border: 1px solid var(--cyber-cyan);
+    color: var(--metal-silver);
+    border: 1px solid var(--metal-silver);
     padding: 0.5rem 1rem;
     text-decoration: none;
     transition: all 0.3s;
 }
 
 .nav-cta:hover {
-    background: var(--cyber-cyan);
+    background: var(--metal-silver);
     color: #000;
-    box-shadow: var(--glow-strong);
+    box-shadow: var(--metal-glow);
 }
 
 /* 1. HERO & SPHERE */
 .power-zone {
     position: relative;
     width: 100%;
-    min-height: 60vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
+    overflow: hidden;
+    padding-bottom: 5rem;
 }
 
-.nexus-sphere {
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle at 30% 30%, var(--cyber-cyan), #000);
-    border-radius: 50%;
-    box-shadow: var(--glow-strong);
-    margin-bottom: 2rem;
-    animation: float 6s ease-in-out infinite;
+.spline-bg {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Full Front Page */
+    z-index: 1;
+    border: none;
+    opacity: 1;
+    flex-shrink: 0;
+    margin-bottom: 0;
+    display: block;
+    /* Required for custom element */
 }
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    padding: 0;
+    margin-top: 0;
+}
+
+/* Removed old .nexus-sphere styles as it is replaced by Spline */
 
 @keyframes float {
 
@@ -163,7 +186,7 @@ body {
 }
 
 .hero-tagline {
-    color: var(--cyber-cyan);
+    color: var(--metal-silver);
     letter-spacing: 5px;
     margin-top: 1rem;
     opacity: 0.8;
@@ -176,7 +199,7 @@ body {
     top: 0;
     bottom: 0;
     width: 20px;
-    border: 2px solid var(--cyber-cyan);
+    border: 2px solid var(--metal-silver);
     opacity: 0.5;
     transition: all 0.5s ease;
 }
@@ -194,7 +217,7 @@ body {
 .power-zone:hover .hud-bracket {
     width: 40px;
     opacity: 1;
-    box-shadow: var(--glow-subtle);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 /* Title Typography */
@@ -205,23 +228,26 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: transparent;
-    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.8);
+    -webkit-text-stroke: 2px rgba(192, 192, 192, 0.8);
     position: relative;
     white-space: nowrap;
-    filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.5));
+    filter: drop-shadow(0 0 15px rgba(224, 224, 224, 0.3));
 }
 
 .brand-title::before {
     content: attr(data-text);
     position: absolute;
     inset: 0;
-    color: var(--cyber-cyan);
+    background: linear-gradient(180deg, #FFFFFF 20%, #A0A0A0 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     width: 0%;
     overflow: hidden;
-    border-right: 4px solid var(--cyber-cyan);
+    border-right: 4px solid var(--metal-silver);
     animation: loadText 3s cubic-bezier(0.19, 1, 0.22, 1) forwards;
     -webkit-text-stroke: 0;
-    filter: drop-shadow(0 0 20px var(--cyber-cyan));
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
     white-space: nowrap;
 }
 
@@ -230,7 +256,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    color: var(--cyber-cyan);
+    color: var(--metal-silver);
     font-size: 1.2rem;
     letter-spacing: 4px;
     margin-top: 1rem;
@@ -239,7 +265,7 @@ body {
 
 .pulse {
     animation: blink 2s infinite;
-    color: var(--cyber-cyan);
+    color: var(--metal-silver);
 }
 
 .font-tech {
@@ -278,7 +304,7 @@ body {
 }
 
 .cyan {
-    color: var(--cyber-cyan);
+    color: var(--metal-silver);
     font-weight: bold;
     text-shadow: var(--glow-subtle);
 }
@@ -333,8 +359,8 @@ body {
 
 .sector-card:hover {
     transform: scale(1.05);
-    border-color: var(--cyber-cyan);
-    box-shadow: var(--glow-subtle);
+    border-color: var(--metal-silver);
+    box-shadow: 0 0 15px rgba(224, 224, 224, 0.2);
     z-index: 10;
 }
 
@@ -346,13 +372,14 @@ body {
 }
 
 .sector-card p {
-    color: var(--cyber-cyan);
+    color: var(--metal-silver);
     font-size: 0.8rem;
     margin-top: 0;
     margin-bottom: 1rem;
     z-index: 2;
     letter-spacing: 2px;
     font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
 .sector-desc {
@@ -432,7 +459,7 @@ body {
 }
 
 .sector-id {
-    color: var(--cyber-cyan);
+    color: var(--metal-silver);
     font-size: 1.5rem;
     margin-bottom: 1rem;
     opacity: 0.8;
@@ -462,7 +489,7 @@ body {
 }
 
 .back-btn {
-    color: var(--cyber-cyan);
+    color: var(--metal-silver);
     text-decoration: none;
     font-size: 1.2rem;
     border: 1px solid var(--cyber-cyan);
@@ -519,7 +546,7 @@ body {
     background: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 0.8rem 1rem;
-    color: var(--cyber-cyan);
+    color: var(--metal-silver);
     flex-grow: 1;
     outline: none;
     transition: all 0.3s;
@@ -533,7 +560,7 @@ body {
 .cyber-btn {
     background: rgba(0, 243, 255, 0.1);
     border: 1px solid var(--cyber-cyan);
-    color: var(--cyber-cyan);
+    color: var(--metal-silver);
     padding: 0 1.5rem;
     cursor: pointer;
     transition: all 0.3s;
@@ -559,7 +586,7 @@ body {
 }
 
 .channel-link:hover {
-    color: var(--cyber-cyan);
+    color: var(--metal-silver);
     padding-left: 10px;
     text-shadow: 0 0 5px var(--cyber-cyan);
 }
